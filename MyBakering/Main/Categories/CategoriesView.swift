@@ -9,7 +9,24 @@ import SwiftUI
 
 struct CategoriesView: View {
     var body: some View {
-        Text("Categoriew View")
+        NavigationStack {
+            VStack {
+                ScrollView {
+                    LazyVStack {
+                        ForEach(CategoriesViewModel.allCases, id: \.rawValue) { item in
+                            NavigationLink {
+                                FeedView()
+                            } label: {
+                                CategoryRowView(item: item)
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 8)
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("카테고리")
+        }
     }
 }
 
