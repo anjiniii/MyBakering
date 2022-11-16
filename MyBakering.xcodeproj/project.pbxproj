@@ -17,6 +17,7 @@
 		51CC8DCD2924CE2000718A19 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DCC2924CE2000718A19 /* MyPageView.swift */; };
 		51CC8DCF2924CE2D00718A19 /* NewRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DCE2924CE2D00718A19 /* NewRecipeView.swift */; };
 		51CC8DD12924CE3700718A19 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DD02924CE3700718A19 /* CategoriesView.swift */; };
+		51CC8DD32924D4D100718A19 /* MyPageFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DD22924D4D100718A19 /* MyPageFilterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		51CC8DCC2924CE2000718A19 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		51CC8DCE2924CE2D00718A19 /* NewRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeView.swift; sourceTree = "<group>"; };
 		51CC8DD02924CE3700718A19 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		51CC8DD22924D4D100718A19 /* MyPageFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFilterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				51CC8DCC2924CE2000718A19 /* MyPageView.swift */,
+				51CC8DD22924D4D100718A19 /* MyPageFilterViewModel.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51CC8DD12924CE3700718A19 /* CategoriesView.swift in Sources */,
+				51CC8DD32924D4D100718A19 /* MyPageFilterViewModel.swift in Sources */,
 				51CC8DC42924C95100718A19 /* FeedView.swift in Sources */,
 				51CC8DC82924CC3700718A19 /* MainTapView.swift in Sources */,
 				51CC8DC02924C4A200718A19 /* RecipeRowView.swift in Sources */,

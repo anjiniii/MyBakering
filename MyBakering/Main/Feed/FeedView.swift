@@ -9,12 +9,15 @@ import SwiftUI
 
 struct FeedView: View {
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(0...20, id: \.self) { _ in
-                    RecipeRowView()
+        NavigationStack {
+            ScrollView {
+                LazyVStack {
+                    ForEach(0...20, id: \.self) { _ in
+                        RecipeRowView()
+                    }
                 }
             }
+            .navigationTitle("Recipes")
         }
     }
 }
