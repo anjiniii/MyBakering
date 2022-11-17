@@ -14,9 +14,13 @@ struct NewRecipeView: View {
     let categories = ["쿠키", "머핀", "케이크", "파이", "빵", "초콜릿", "기타"]
     @State private var selectedCategory = "기타"
     
-    @State private var ingredientTitle1 = ""
-    @State private var ingredient1 = ""
+    @State private var ingredients = [[String]]()
+    @State private var ingredient = [String]()
+    @State private var newIngredient = ""
+    @State private var newVolume = ""
     
+    @State private var steps = [String]()
+    @State private var newStep = ""
     
     var body: some View {
         NavigationStack {
@@ -37,122 +41,139 @@ struct NewRecipeView: View {
                 
                 // 레시피 정보
                 Section {
+                    Text("레시피 정보")
+                        .font(.headline)
+                        .listRowBackground(Color.myBrown)
+                        .foregroundColor(.white)
                     TextField("이름", text: $name)
                     TextField("설명", text: $description)
                     
                     Picker("카테고리", selection: $selectedCategory) {
                         ForEach(categories, id: \.self) { Text($0) }
                     }
-                } header: {
-                    Text("레시피 정보")
                 }
                 
-                // 재료 목록 1
+                // 재료 추가
                 Section {
-                    TextField("재료 목록 이름", text: $ingredientTitle1)
+                    Text("재료 추가하기")
+                        .font(.headline)
+                        .listRowBackground(Color.myLightBrown)
+                        .foregroundColor(.white)
+                    TextField("재료", text: $newIngredient)
                     HStack {
-                        TextField("재료", text: $ingredient1)
+                        TextField("양", text: $newVolume)
+                        Divider()
                         Button {
-                            
+                            addIngredient(ingredient: newIngredient, volume: newVolume)
                         } label: {
                             Image(systemName: "plus.circle.fill")
                         }
                     }
-                    
-                    
-                    
                 } header: {
-                    Text((ingredientTitle1 == "") ? "재료" : ingredientTitle1)
+                    Text("'Edit' 버튼을 눌러 재료와 과정을 수정할 수 있습니다.")
                 }
                 
-                // 재료 목록 추가하기
+                // 재료
                 Section {
-                    Button {
-                        
-                    } label: {
+                    ForEach(0 ..< ingredients.count, id: \.self) { i in
                         HStack {
-                            Spacer()
-                            Text("재료 목록 추가")
-                            Spacer()
+                            Text(ingredients[i][0])
+                            Text(ingredients[i][1])
                         }
-                        .foregroundColor(.black)
                     }
+                    .onDelete(perform: deleteIngredient)
+                    .onMove(perform: moveIngredient)
+                } header: {
+                    ingredients.count == 0 ? Text("") : Text("재료")
                 }
                 
-                // 과정 1
+                // 과정 추가
                 Section {
-                    TextField("과정 이름", text: $ingredientTitle1)
+                    Text("과정 추가하기")
+                        .font(.headline)
+                        .listRowBackground(Color.myLightBrown)
+                        .foregroundColor(.white)
                     HStack {
-                        TextField("과정", text: $ingredient1)
+                        Image(systemName: "\(steps.count + 1).square.fill")
+                            .foregroundColor(Color.myLightBrown)
+                        TextField("과정", text: $newStep, axis: .vertical)
+                        Divider()
                         Button {
-                            
+                            addStep(step: newStep)
                         } label: {
                             Image(systemName: "plus.circle.fill")
                         }
                     }
-                    
-                    
-                    
-                } header: {
-                    Text((ingredientTitle1 == "") ? "과정" : ingredientTitle1)
                 }
                 
-                // 재료 목록 추가하기
+                // 과정
                 Section {
-                    Button {
-                        
-                    } label: {
+                    ForEach(0 ..< steps.count, id: \.self) { i in
                         HStack {
-                            Spacer()
-                            Text("과정 목록 추가")
-                            Spacer()
+                            Image(systemName: "\(i + 1).square.fill")
+                                .foregroundColor(Color.myLightBrown)
+                            Text(steps[i])
                         }
-                        .foregroundColor(.black)
                     }
+                    .onDelete(perform: deleteStep)
+                    .onMove(perform: moveStep)
+                } header: {
+                    steps.count == 0 ? Text("") : Text("과정")
                 }
                 
             }
-//            .listStyle(.sidebar)
             .navigationTitle("새로운 레시피 추가")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("저장하기") {
-                        
-                    }
+                    EditButton()
                 }
+                
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.myGray)
         }
     }
     
-    
-}
-
-struct coloredImage: View {
-    let systemName: String
-    let color: Color
-    var body: some View {
-        Image(systemName: systemName)
-            .foregroundColor(color)
+    private func addIngredient(ingredient: String, volume: String) {
+        self.ingredient.append(ingredient)
+        self.ingredient.append(volume)
+        
+        self.ingredients.append(self.ingredient)
+        
+        self.ingredient = [String]()
+        self.newIngredient = ""
+        self.newVolume = ""
     }
+    
+    private func addStep(step: String) {
+        self.steps.append(step)
+        self.newStep = ""
+    }
+    
+    func deleteIngredient(indexSet: IndexSet) {
+        indexSet.forEach { index in
+            ingredients.remove(at: index)
+        }
+    }
+        
+    func moveIngredient(from Source: IndexSet, to destination: Int) {
+        ingredients.move(fromOffsets: Source, toOffset: destination)
+    }
+    
+    func deleteStep(indexSet: IndexSet) {
+        indexSet.forEach { index in
+            steps.remove(at: index)
+        }
+    }
+        
+    func moveStep(from Source: IndexSet, to destination: Int) {
+        steps.move(fromOffsets: Source, toOffset: destination)
+    }
+    
 }
 
 struct NewRecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        NewRecipeView()
-//        coloredImage()
-    }
+        NewRecipeView()    }
 }
-
-
-//                    Button {
-//
-//                    } label: {
-//                        Image("add_photo")
-//                            .resizable()
-//                            .renderingMode(.template)
-//                            .foregroundColor(Color(.systemBrown))
-//                            .scaledToFill()
-//                            .frame(width: 160, height: 160)
-//                            .clipShape(Circle())
-//                    }

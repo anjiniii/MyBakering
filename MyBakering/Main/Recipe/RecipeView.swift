@@ -69,9 +69,9 @@ struct RecipeView: View {
                     
                     Divider()
                     
-                    // 순서
+                    // 과정
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("순서")
+                        Text("과정")
                             .font(.title3)
                         
                         ForEach(0 ..< steps.count, id: \.self) { i in

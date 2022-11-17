@@ -8,10 +8,10 @@
 import Foundation
 
 struct Ingredient {
-    var ingredient: String
+    var ingredientTitle: String
     var volume: String
 }
 
-class Ingredients {
+class IngredientsStore: ObservableObject {
     @Published var ingredients = [Ingredient]()
 }
