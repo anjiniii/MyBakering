@@ -18,7 +18,7 @@ struct RecipeRowView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text("초코칩 쿠키")
-                            .font(.title2).bold()
+                            .font(.title3).bold()
                         
                         Spacer()
                         
