@@ -43,7 +43,7 @@ struct NewRecipeView: View {
                 Section {
                     Text("레시피 정보")
                         .font(.headline)
-                        .listRowBackground(Color.myBrown)
+                        .listRowBackground(Color.accentColor)
                         .foregroundColor(.white)
                     TextField("이름", text: $name)
                     TextField("설명", text: $description)
@@ -119,6 +119,20 @@ struct NewRecipeView: View {
                     .onMove(perform: moveStep)
                 } header: {
                     steps.count == 0 ? Text("") : Text("과정")
+                }
+                
+                Section {
+                    Button {
+                        // add
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("추가하기")
+                            Spacer()
+                        }
+                        .foregroundColor(.white).bold()
+                    }
+                    .listRowBackground(Color.accentColor)
                 }
                 
             }
