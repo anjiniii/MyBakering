@@ -34,7 +34,7 @@ struct MyPageView: View {
 extension MyPageView {
     var headerView: some View {
         ZStack(alignment: .bottomLeading) {
-            Color(.systemBrown)
+            Color.myLightBrown
                 .ignoresSafeArea()
             
             Circle()
@@ -88,7 +88,7 @@ extension MyPageView {
                     
                     if selectedFilter == item {
                         Capsule()
-                            .foregroundColor(Color(.systemBrown))
+                            .foregroundColor(Color.accentColor)
                             .frame(height: 3)
                             .matchedGeometryEffect(id: "filter", in: animation)
                     } else {

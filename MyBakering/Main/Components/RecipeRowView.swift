@@ -13,7 +13,7 @@ struct RecipeRowView: View {
             HStack(alignment: .top, spacing: 20) {
                 RoundedRectangle(cornerRadius: 16)
                     .frame(width: 100, height: 100)
-                    .foregroundColor(Color(.systemBrown))
+                    .foregroundColor(Color.accentColor)
                 
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
