@@ -11,7 +11,7 @@ import SwiftUI
 struct MyBakeringApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            ContentView()
         }
     }
 }

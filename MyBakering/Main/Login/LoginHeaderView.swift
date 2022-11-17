@@ -22,11 +22,11 @@ struct LoginHeaderView: View {
         .padding(.leading)
         .background(Color.myLightBrown)
         .foregroundColor(.white)
-        .clipShape(RoundedShape(coners: [.bottomRight]))
+        .clipShape(AuthRoundedShape(coners: [.bottomRight]))
     }
 }
 
-struct RoundedShape: Shape {
+struct AuthRoundedShape: Shape {
     var coners: UIRectCorner
     
     func path(in rect: CGRect) -> Path {

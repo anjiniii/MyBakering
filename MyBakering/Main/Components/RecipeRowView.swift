@@ -19,6 +19,7 @@ struct RecipeRowView: View {
                     HStack {
                         Text("초코칩 쿠키")
                             .font(.title3).bold()
+                            .foregroundColor(.black)
                         
                         Spacer()
                         
@@ -31,6 +32,7 @@ struct RecipeRowView: View {
                     }
                     Text("네모난 초코칩이 촉촉촉 \n초코 초코 초코칩 냠냠")
                         .font(.subheadline)
+                        .foregroundColor(.black)
                     
                     HStack {
                         Image(systemName: "person.fill")
