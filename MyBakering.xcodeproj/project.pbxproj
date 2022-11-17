@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51AD2E5E2925F38700460937 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E5D2925F38700460937 /* Ingredient.swift */; };
+		51AD2E612925FAD500460937 /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E602925FAD500460937 /* ColorExtention.swift */; };
 		51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */; };
 		51CC8DB22924C3E800718A19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DB12924C3E800718A19 /* ContentView.swift */; };
 		51CC8DB42924C3E800718A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CC8DB32924C3E800718A19 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		51AD2E5D2925F38700460937 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		51AD2E602925FAD500460937 /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		51CC8DAC2924C3E800718A19 /* MyBakering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBakering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBakeringApp.swift; sourceTree = "<group>"; };
 		51CC8DB12924C3E800718A19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51AD2E5F2925FABD00460937 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				51AD2E602925FAD500460937 /* ColorExtention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		51CC8DA32924C3E800718A19 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 				51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */,
 				51CC8DB12924C3E800718A19 /* ContentView.swift */,
 				51CC8DB32924C3E800718A19 /* Assets.xcassets */,
+				51AD2E5F2925FABD00460937 /* Extentions */,
 				51CC8DB52924C3E800718A19 /* Preview Content */,
 			);
 			path = MyBakering;
@@ -226,6 +237,7 @@
 				51CC8DD72924DC8500718A19 /* CategoriesViewModel.swift in Sources */,
 				51CC8DD12924CE3700718A19 /* CategoriesView.swift in Sources */,
 				51CC8DD52924D94500718A19 /* CategoryRowView.swift in Sources */,
+				51AD2E612925FAD500460937 /* ColorExtention.swift in Sources */,
 				51CC8DD32924D4D100718A19 /* MyPageFilterViewModel.swift in Sources */,
 				51CC8DC42924C95100718A19 /* FeedView.swift in Sources */,
 				51CC8DC82924CC3700718A19 /* MainTabView.swift in Sources */,
