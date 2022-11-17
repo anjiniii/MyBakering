@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		51AD2E5E2925F38700460937 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E5D2925F38700460937 /* Ingredient.swift */; };
 		51AD2E612925FAD500460937 /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E602925FAD500460937 /* ColorExtention.swift */; };
+		51AD2E642925FDC300460937 /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E632925FDC300460937 /* LoginHeaderView.swift */; };
+		51AD2E662925FF4500460937 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E652925FF4500460937 /* LoginView.swift */; };
+		51AD2E68292602FD00460937 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E67292602FD00460937 /* RegisterView.swift */; };
 		51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */; };
 		51CC8DB22924C3E800718A19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DB12924C3E800718A19 /* ContentView.swift */; };
 		51CC8DB42924C3E800718A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CC8DB32924C3E800718A19 /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 /* Begin PBXFileReference section */
 		51AD2E5D2925F38700460937 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		51AD2E602925FAD500460937 /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
+		51AD2E632925FDC300460937 /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
+		51AD2E652925FF4500460937 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		51AD2E67292602FD00460937 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		51CC8DAC2924C3E800718A19 /* MyBakering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBakering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBakeringApp.swift; sourceTree = "<group>"; };
 		51CC8DB12924C3E800718A19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +66,16 @@
 				51AD2E602925FAD500460937 /* ColorExtention.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		51AD2E622925FDA900460937 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				51AD2E632925FDC300460937 /* LoginHeaderView.swift */,
+				51AD2E652925FF4500460937 /* LoginView.swift */,
+				51AD2E67292602FD00460937 /* RegisterView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		51CC8DA32924C3E800718A19 = {
@@ -102,6 +118,7 @@
 		51CC8DBD2924C47D00718A19 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				51AD2E622925FDA900460937 /* Login */,
 				51CC8DBE2924C48800718A19 /* Components */,
 				51CC8DC12924C91500718A19 /* Feed */,
 				51CC8DC92924CD0900718A19 /* Categories */,
@@ -237,6 +254,7 @@
 				51CC8DD72924DC8500718A19 /* CategoriesViewModel.swift in Sources */,
 				51CC8DD12924CE3700718A19 /* CategoriesView.swift in Sources */,
 				51CC8DD52924D94500718A19 /* CategoryRowView.swift in Sources */,
+				51AD2E662925FF4500460937 /* LoginView.swift in Sources */,
 				51AD2E612925FAD500460937 /* ColorExtention.swift in Sources */,
 				51CC8DD32924D4D100718A19 /* MyPageFilterViewModel.swift in Sources */,
 				51CC8DC42924C95100718A19 /* FeedView.swift in Sources */,
@@ -245,6 +263,8 @@
 				51CC8DB22924C3E800718A19 /* ContentView.swift in Sources */,
 				51AD2E5E2925F38700460937 /* Ingredient.swift in Sources */,
 				51CC8DCF2924CE2D00718A19 /* NewRecipeView.swift in Sources */,
+				51AD2E642925FDC300460937 /* LoginHeaderView.swift in Sources */,
+				51AD2E68292602FD00460937 /* RegisterView.swift in Sources */,
 				51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */,
 				51CC8DCD2924CE2000718A19 /* MyPageView.swift in Sources */,
 			);
