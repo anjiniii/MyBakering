@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    var userSession: String? = "wow"
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        if userSession == nil {
+        if viewModel.userSession == nil {
             LoginView()
         } else {
             MainTabView()

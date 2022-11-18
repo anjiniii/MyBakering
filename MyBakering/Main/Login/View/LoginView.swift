@@ -11,6 +11,7 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @EnvironmentObject var viewModel: AuthViewModel
     @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
@@ -27,7 +28,7 @@ struct LoginView: View {
                 .focused($textFieldIsFocused)
                 
                 Button {
-                    //                viewModel.login(withEmail: email, password: password)
+                    viewModel.login(withEmail: email, password: password)
                 } label: {
                     Text("로그인")
                         .font(.headline).bold()

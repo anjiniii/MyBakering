@@ -10,6 +10,7 @@ import Firebase
 
 @main
 struct MyBakeringApp: App {
+    @StateObject var viewModel = AuthViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -17,7 +18,7 @@ struct MyBakeringApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(viewModel)
         }
     }
 }

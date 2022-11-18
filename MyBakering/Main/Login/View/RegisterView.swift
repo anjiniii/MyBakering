@@ -12,6 +12,7 @@ struct RegisterView: View {
     @State private var nickname = ""
     @State private var password = ""
     
+    @EnvironmentObject var viewModel: AuthViewModel
     @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
@@ -29,7 +30,9 @@ struct RegisterView: View {
                 .focused($textFieldIsFocused)
                 
                 Button {
-                    // register
+                    viewModel.register(withEmail: email,
+                                       nickname: nickname,
+                                       password: password)
                 } label: {
                     Text("시작하기")
                         .font(.headline).bold()

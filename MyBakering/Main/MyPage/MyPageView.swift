@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyPageView: View {
     @State private var selectedFilter: MyPageFilterViewModel = .recipes
+    @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.dismiss) var dismiss
     @Namespace var animation
     
@@ -64,7 +65,7 @@ extension MyPageView {
             }
             
             Button {
-                //
+                viewModel.signOut()
             } label: {
                 Text("로그아웃")
                     .font(.subheadline).bold()
