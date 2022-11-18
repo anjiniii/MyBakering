@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileEditView: View {
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    
+//    @State private var editUserNickname = false
+//    @State private var newNickname = ""
     
     @EnvironmentObject var viewModel: AuthViewModel
     
@@ -20,18 +24,37 @@ struct ProfileEditView: View {
             
             profileImageView
             
-            HStack {
-                Text("user.nickname")
-                    .foregroundColor(.myDarkBrown)
-                Button {
-                    
-                } label: {
-                    Image(systemName: "pencil")
-                        .foregroundColor(Color.gray)
-                }
-            }
-            .font(.title).bold()
-            .padding(24)
+            // edit nickname
+//            HStack {
+//                if editUserNickname {
+//                    TextEditor(text: $newNickname)
+//                        .frame(width: 240, height: 50)
+//                        .background(Color.myGray)
+//                        .overlay(Capsule()
+//                            .foregroundColor(Color.accentColor)
+//                            .frame(height: 3)
+//                            .offset(y: 25)
+//                        )
+//
+//                    if newNickname.isEmpty {
+//                        Text(viewModel.currentUser?.nickname ?? "")
+//                            .foregroundColor(Color(.placeholderText))
+//                            .padding(.horizontal, 8)
+//                            .padding(.vertical, 12)
+//                    }
+//                } else {
+//                    Text(viewModel.currentUser?.nickname ?? "user nickname")
+//                        .foregroundColor(.myDarkBrown)
+//                    Button {
+//                        editUserNickname.toggle()
+//                    } label: {
+//                        Image(systemName: "pencil")
+//                            .foregroundColor(Color.gray)
+//                    }
+//                }
+//            }
+//            .font(.title).bold()
+//            .padding(24)
             
             if let selectedImage = selectedImage {
                 Button {
@@ -77,14 +100,22 @@ extension ProfileEditView {
                     .frame(width: 180, height: 180)
                     .clipShape(Circle())
             } else {
-                Image("Profile_Image")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(Color.myBrown)
-                    .scaledToFill()
-                    .frame(width: 180, height: 180)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.accentColor, lineWidth: 4))
+                if let profileImageUrl = viewModel.currentUser?.profileImageUrl {
+                    KFImage(URL(string: profileImageUrl))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 180, height: 180)
+                        .clipShape(Circle())
+                } else {
+                    Image("Profile_Image")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Color.myBrown)
+                        .scaledToFill()
+                        .frame(width: 180, height: 180)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.accentColor, lineWidth: 4))
+                }
             }
         }
         .padding(.top, 48)

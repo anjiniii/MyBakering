@@ -25,7 +25,7 @@ struct ProfileImageUploader {
             
             ref.downloadURL { imageUrl, _ in
                 guard let imageUrl = imageUrl?.absoluteString else { return }
-                completion(imageUrl) //video 03:54:03
+                completion(imageUrl)
             }
         }
     }

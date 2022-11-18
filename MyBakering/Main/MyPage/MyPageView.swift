@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MyPageView: View {
     @State private var selectedFilter: MyPageFilterViewModel = .recipes
@@ -17,7 +18,27 @@ struct MyPageView: View {
         if let user = viewModel.currentUser {
             NavigationStack {
                 VStack(alignment: .leading) {
-                    headerView
+                    // headerView
+                    ZStack(alignment: .bottomLeading) {
+                        Color.myLightBrown
+                            .ignoresSafeArea()
+                        
+                        if let profileImageUrl = user.profileImageUrl {
+                            KFImage(URL(string: profileImageUrl))
+                                .resizable()
+                                .modifier(ProfileImageModifier())
+                        } else {
+                            Image(user.profileImageUrl ?? "Profile_Image")
+                                .resizable()
+                                .renderingMode(.template)
+                                .foregroundColor(Color.myBrown)
+                                .background(Color.white)
+                                .modifier(ProfileImageModifier())
+                                .overlay(Circle().stroke(Color.gray, lineWidth: 1))
+                        }
+                        
+                    }
+                    .frame(height: 64)
                     
                     actionButtons
                     
@@ -37,25 +58,6 @@ struct MyPageView: View {
 }
 
 extension MyPageView {
-    var headerView: some View {
-        ZStack(alignment: .bottomLeading) {
-            Color.myLightBrown
-                .ignoresSafeArea()
-            
-            Image("Profile_Image")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(Color.myBrown)
-                    .background(Color.white)
-                    .scaledToFill()
-                .frame(width: 72, height: 72)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.gray, lineWidth: 1))
-                .offset(x: 16, y: 24)
-        }
-        .frame(height: 64)
-    }
-    
     var actionButtons: some View {
         HStack(spacing: 12) {
             Spacer()
@@ -126,8 +128,12 @@ extension MyPageView {
     }
 }
 
-//struct MyPageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MyPageView()
-//    }
-//}
+struct ProfileImageModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledToFill()
+            .frame(width: 72, height: 72)
+            .clipShape(Circle())
+            .offset(x: 16, y: 24)
+    }
+}

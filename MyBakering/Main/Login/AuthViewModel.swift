@@ -79,4 +79,14 @@ class AuthViewModel: ObservableObject {
                 }
         }
     }
+    
+    func editNickname(_ nickname: String) {
+        guard let uid = userSession?.uid else { return }
+        
+        Firestore.firestore().collection("users")
+            .document(uid)
+            .updateData(["nickname": nickname]) { _ in
+                self.fetchUser()
+            }
+    }
 }
