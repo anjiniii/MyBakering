@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct NewRecipeView: View {
+    @State private var recipeImage = ""
     @State private var name = ""
     @State private var description = ""
+    @State private var selectedCategory = "기타"
+    @State private var ingredients = [String]()
+    @State private var steps = [String]()
+    
+    @State private var newIngredient = ""
+    @State private var newStep = ""
     
     let categories = ["쿠키", "머핀", "케이크", "파이", "빵", "초콜릿", "기타"]
-    @State private var selectedCategory = "기타"
-    
-    @State private var ingredients = [[String]]()
-    @State private var ingredient = [String]()
-    @State private var newIngredient = ""
-    @State private var newVolume = ""
-    
-    @State private var steps = [String]()
-    @State private var newStep = ""
     
     var body: some View {
         NavigationStack {
@@ -60,9 +58,9 @@ struct NewRecipeView: View {
                         .listRowBackground(Color.accentColor)
                         .foregroundColor(.white)
                     TextField("재료", text: $newIngredient)
-                    TextField("양", text: $newVolume)
+//                    TextField("양", text: $newVolume)
                     Button {
-                        addIngredient(ingredient: newIngredient, volume: newVolume)
+                        addIngredient(ingredient: newIngredient)
                     } label: {
                         HStack {
                             Spacer()
@@ -77,11 +75,22 @@ struct NewRecipeView: View {
                 }
                 
                 // 재료
+//                Section {
+//                    ForEach(0 ..< ingredients.count, id: \.self) { i in
+//                        HStack {
+//                            Text(ingredients[i][0])
+//                            Text(ingredients[i][1])
+//                        }
+//                    }
+//                    .onDelete(perform: deleteIngredient)
+//                    .onMove(perform: moveIngredient)
+//                } header: {
+//                    ingredients.count == 0 ? Text("") : Text("재료")
+//                }
                 Section {
                     ForEach(0 ..< ingredients.count, id: \.self) { i in
                         HStack {
-                            Text(ingredients[i][0])
-                            Text(ingredients[i][1])
+                            Text(ingredients[i])
                         }
                     }
                     .onDelete(perform: deleteIngredient)
@@ -129,6 +138,7 @@ struct NewRecipeView: View {
                     steps.count == 0 ? Text("") : Text("과정")
                 }
                 
+                // 레시피 추가
                 Section {
                     Button {
                         // add
@@ -157,15 +167,20 @@ struct NewRecipeView: View {
         }
     }
     
-    private func addIngredient(ingredient: String, volume: String) {
-        self.ingredient.append(ingredient)
-        self.ingredient.append(volume)
-        
-        self.ingredients.append(self.ingredient)
-        
-        self.ingredient = [String]()
+//    private func addIngredient(ingredient: String, volume: String) {
+//        self.ingredient.append(ingredient)
+//        self.ingredient.append(volume)
+//
+//        self.ingredients.append(self.ingredient)
+//
+//        self.ingredient = [String]()
+//        self.newIngredient = ""
+//        self.newVolume = ""
+//    }
+    
+    private func addIngredient(ingredient: String) {
+        self.ingredients.append(ingredient)
         self.newIngredient = ""
-        self.newVolume = ""
     }
     
     private func addStep(step: String) {
