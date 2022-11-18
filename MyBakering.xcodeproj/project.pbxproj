@@ -232,8 +232,8 @@
 		51CC8DCB2924CD6600718A19 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				51CC8DCC2924CE2000718A19 /* MyPageView.swift */,
 				51CC8DD22924D4D100718A19 /* MyPageFilterViewModel.swift */,
+				51CC8DCC2924CE2000718A19 /* MyPageView.swift */,
 				51AD2E8A2927536900460937 /* ProfileEditView.swift */,
 			);
 			path = MyPage;

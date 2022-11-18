@@ -15,20 +15,22 @@ struct MyPageView: View {
     
     var body: some View {
         if let user = viewModel.currentUser {
-            VStack(alignment: .leading) {
-                headerView
-                
-                actionButtons
-                
-                Text(user.nickname)
-                    .font(.title).bold()
-                    .padding(.horizontal, 20)
-                
-                myPageFilterBar
-                
-                recipesView
-                
-                Spacer()
+            NavigationStack {
+                VStack(alignment: .leading) {
+                    headerView
+                    
+                    actionButtons
+                    
+                    Text(user.nickname)
+                        .font(.title).bold()
+                        .padding(.horizontal, 20)
+                    
+                    myPageFilterBar
+                    
+                    recipesView
+                    
+                    Spacer()
+                }
             }
         }
     }
@@ -56,8 +58,8 @@ extension MyPageView {
         HStack(spacing: 12) {
             Spacer()
             
-            Button {
-                //
+            NavigationLink {
+                ProfileEditView()
             } label: {
                 Text("프로필 편집")
                     .font(.subheadline).bold()
@@ -122,8 +124,8 @@ extension MyPageView {
     }
 }
 
-struct MyPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyPageView()
-    }
-}
+//struct MyPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyPageView()
+//    }
+//}
