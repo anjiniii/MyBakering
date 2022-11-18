@@ -20,6 +20,8 @@ struct NewRecipeView: View {
     
     let categories = ["쿠키", "머핀", "케이크", "파이", "빵", "초콜릿", "기타"]
     
+    @ObservedObject var viewModel = UploadRecipeViewModel()
+    
     var body: some View {
         NavigationStack {
             List {
@@ -141,7 +143,14 @@ struct NewRecipeView: View {
                 // 레시피 추가
                 Section {
                     Button {
-                        // add
+                        viewModel.uploadRecipe(recipeImage: recipeImage,
+                                               name: name,
+                                               description: description,
+                                               selectedCategory: selectedCategory,
+                                               ingredients: ingredients,
+                                               steps: steps)
+                        resetRecipe()
+                        
                     } label: {
                         HStack {
                             Spacer()
@@ -206,6 +215,15 @@ struct NewRecipeView: View {
         
     func moveStep(from Source: IndexSet, to destination: Int) {
         steps.move(fromOffsets: Source, toOffset: destination)
+    }
+    
+    func resetRecipe() {
+        self.recipeImage = ""
+        self.name = ""
+        self.description = ""
+        self.selectedCategory = "기타"
+        self.ingredients = [String]()
+        self.steps = [String]()
     }
     
 }

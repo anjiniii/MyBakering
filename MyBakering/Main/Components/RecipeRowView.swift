@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecipeRowView: View {
+    let recipe: Recipe
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 20) {
@@ -17,7 +19,7 @@ struct RecipeRowView: View {
                 
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
-                        Text("초코칩 쿠키")
+                        Text(recipe.name)
                             .font(.title3).bold()
                             .foregroundColor(.black)
                         
@@ -30,27 +32,22 @@ struct RecipeRowView: View {
                         }
                         .padding(.horizontal)
                     }
-                    Text("네모난 초코칩이 촉촉촉 \n초코 초코 초코칩 냠냠")
+                    Text(recipe.description)
                         .font(.subheadline)
                         .foregroundColor(.black)
-                    
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text("이오이오링")
+                    if let user = recipe.user {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text(user.nickname)
+                        }
+                        .font(.footnote)
+                        .foregroundColor(Color(.darkGray))
                     }
-                    .font(.footnote)
-                    .foregroundColor(Color(.darkGray))
                 }
             }
             .padding(16)
             
             Divider()
         }
-    }
-}
-
-struct RecipeRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeRowView()
     }
 }

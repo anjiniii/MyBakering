@@ -121,7 +121,7 @@ extension MyPageView {
         ScrollView {
             LazyVStack {
                 ForEach( 0...20, id: \.self) { _ in
-                    RecipeRowView()
+//                    RecipeRowView(recipe:)
                 }
             }
         }

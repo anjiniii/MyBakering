@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct FeedView: View {
+    @ObservedObject var viewModel = FeedViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(0...20, id: \.self) { _ in
+                    ForEach(viewModel.recipes) { recipe in
                         NavigationLink {
                             RecipeView()
                         } label: {
-                            RecipeRowView()
+                            RecipeRowView(recipe: recipe)
                         }
                     }
                 }

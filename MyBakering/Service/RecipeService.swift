@@ -39,4 +39,15 @@ struct RecipeService {
             }
     }
     
+    func fetchRecipes(completion: @escaping([Recipe]) -> Void) {
+        Firestore.firestore().collection("recipes")
+            .order(by: "timestamp", descending: true)
+            .getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+                
+            let recipes = documents.compactMap({ try? $0.data(as: Recipe.self) })
+            completion(recipes)
+        }
+    }
+    
 }
