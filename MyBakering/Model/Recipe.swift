@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 struct Recipe: Identifiable, Decodable {
     @DocumentID var id: String?
     let uid: String
-    let recipeImage: String
+    let recipeImageUrl: String
     let name: String
     let description: String
     let selectedCategory: String

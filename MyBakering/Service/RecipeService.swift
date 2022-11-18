@@ -9,7 +9,7 @@ import Firebase
 
 struct RecipeService {
     
-    func uploadRecipe(recipeImage: String,
+    func uploadRecipe(recipeImageUrl: String,
                       name: String,
                       description: String,
                       selectedCategory: String,
@@ -18,7 +18,7 @@ struct RecipeService {
         guard let uid = Auth.auth().currentUser?.uid else  { return }
         
         let data = ["uid": uid,
-                    "recipeImage": recipeImage,
+                    "recipeImageUrl": recipeImageUrl,
                     "name": name,
                     "description": description,
                     "selectedCategory": selectedCategory,

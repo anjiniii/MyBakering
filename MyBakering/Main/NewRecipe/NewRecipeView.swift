@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct NewRecipeView: View {
-    @State private var recipeImage = ""
+    @State private var recipeImageUrl = ""
     @State private var name = ""
     @State private var description = ""
     @State private var selectedCategory = "기타"
     @State private var ingredients = [String]()
     @State private var steps = [String]()
     
+    let categories = ["쿠키", "머핀", "케이크", "파이", "빵", "초콜릿", "기타"]
     @State private var newIngredient = ""
     @State private var newStep = ""
     
-    let categories = ["쿠키", "머핀", "케이크", "파이", "빵", "초콜릿", "기타"]
-    
     @ObservedObject var viewModel = UploadRecipeViewModel()
+    @State private var showImagePicker = false
+    @State private var selectedImage: UIImage?
+    @State private var recipeImage: Image?
+    
     
     var body: some View {
         NavigationStack {
@@ -28,15 +31,27 @@ struct NewRecipeView: View {
                 // 레시피 사진
                 Section {
                     Button {
-                        
+                        showImagePicker.toggle()
                     } label: {
-                        HStack {
-                            Text("사진 추가")
-                                .foregroundColor(.black)
-                            Spacer()
-                            Image(systemName: "plus.circle.fill")
+                        if let recipeImage = recipeImage {
+                            recipeImage
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 280)
+                                .listRowBackground(Color.clear)
+                        } else {
+                            HStack {
+                                Text("사진 추가")
+                                    .foregroundColor(.black)
+                                Spacer()
+                                Image(systemName: "plus.circle.fill")
+                            }
                         }
                     }
+                }
+                .sheet(isPresented: $showImagePicker,
+                       onDismiss: loadImage) {
+                    ImagePicker(selectedImage: $selectedImage)
                 }
                 
                 // 레시피 정보
@@ -143,12 +158,14 @@ struct NewRecipeView: View {
                 // 레시피 추가
                 Section {
                     Button {
-                        viewModel.uploadRecipe(recipeImage: recipeImage,
-                                               name: name,
-                                               description: description,
-                                               selectedCategory: selectedCategory,
-                                               ingredients: ingredients,
-                                               steps: steps)
+                        if let selectedImage = selectedImage {
+                            viewModel.uploadRecipe(recipeImage: selectedImage,
+                                                   name: name,
+                                                   description: description,
+                                                   selectedCategory: selectedCategory,
+                                                   ingredients: ingredients,
+                                                   steps: steps)
+                        }
                         resetRecipe()
                         
                     } label: {
@@ -218,12 +235,18 @@ struct NewRecipeView: View {
     }
     
     func resetRecipe() {
-        self.recipeImage = ""
+        self.recipeImageUrl = ""
         self.name = ""
         self.description = ""
         self.selectedCategory = "기타"
         self.ingredients = [String]()
         self.steps = [String]()
+        self.recipeImage = nil
+    }
+    
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        recipeImage = Image(uiImage: selectedImage)
     }
     
 }
