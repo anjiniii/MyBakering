@@ -42,12 +42,14 @@ extension MyPageView {
             Color.myLightBrown
                 .ignoresSafeArea()
             
-            Circle()
-//                    .resizable()
-//                    .scaledToFill()
-//                    .clipShape(Circle())
-                .foregroundColor(.white)
+            Image("Profile_Image")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(Color.myBrown)
+                    .background(Color.white)
+                    .scaledToFill()
                 .frame(width: 72, height: 72)
+                .clipShape(Circle())
                 .overlay(Circle().stroke(Color.gray, lineWidth: 1))
                 .offset(x: 16, y: 24)
         }

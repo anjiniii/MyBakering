@@ -22,6 +22,8 @@
 		51AD2E862926548800460937 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 51AD2E852926548800460937 /* FirebaseStorage */; };
 		51AD2E8929273FF400460937 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E8829273FF400460937 /* UserService.swift */; };
 		51AD2E8B2927536900460937 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E8A2927536900460937 /* ProfileEditView.swift */; };
+		51AD2E8D2927739500460937 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E8C2927739500460937 /* ImagePicker.swift */; };
+		51AD2E8F2927740300460937 /* ProfileImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E8E2927740300460937 /* ProfileImageUploader.swift */; };
 		51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */; };
 		51CC8DB22924C3E800718A19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DB12924C3E800718A19 /* ContentView.swift */; };
 		51CC8DB42924C3E800718A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CC8DB32924C3E800718A19 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		51AD2E7C2926522D00460937 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		51AD2E8829273FF400460937 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		51AD2E8A2927536900460937 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		51AD2E8C2927739500460937 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		51AD2E8E2927740300460937 /* ProfileImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploader.swift; sourceTree = "<group>"; };
 		51CC8DAC2924C3E800718A19 /* MyBakering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBakering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBakeringApp.swift; sourceTree = "<group>"; };
 		51CC8DB12924C3E800718A19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				51AD2E8829273FF400460937 /* UserService.swift */,
+				51AD2E8E2927740300460937 /* ProfileImageUploader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				51AD2E7B2926521F00460937 /* Model */,
 				51CC8DBD2924C47D00718A19 /* Main */,
 				51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */,
+				51AD2E8C2927739500460937 /* ImagePicker.swift */,
 				51CC8DB12924C3E800718A19 /* ContentView.swift */,
 				51AD2E5F2925FABD00460937 /* Extentions */,
 				51CC8DB32924C3E800718A19 /* Assets.xcassets */,
@@ -326,6 +332,7 @@
 				51AD2E612925FAD500460937 /* ColorExtention.swift in Sources */,
 				51CC8DD32924D4D100718A19 /* MyPageFilterViewModel.swift in Sources */,
 				51CC8DC42924C95100718A19 /* FeedView.swift in Sources */,
+				51AD2E8D2927739500460937 /* ImagePicker.swift in Sources */,
 				51CC8DC82924CC3700718A19 /* MainTabView.swift in Sources */,
 				51AD2E792926504900460937 /* AuthViewModel.swift in Sources */,
 				51CC8DC02924C4A200718A19 /* RecipeRowView.swift in Sources */,
@@ -338,6 +345,7 @@
 				51AD2E8B2927536900460937 /* ProfileEditView.swift in Sources */,
 				51AD2E8929273FF400460937 /* UserService.swift in Sources */,
 				51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */,
+				51AD2E8F2927740300460937 /* ProfileImageUploader.swift in Sources */,
 				51CC8DCD2924CE2000718A19 /* MyPageView.swift in Sources */,
 				51AD2E7D2926522D00460937 /* User.swift in Sources */,
 			);
