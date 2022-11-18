@@ -10,12 +10,17 @@ import Kingfisher
 
 struct MyPageView: View {
     @State private var selectedFilter: MyPageFilterViewModel = .recipes
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var authviewModel: AuthViewModel
+    @ObservedObject var viewModel: MyPageViewModel
     @Environment(\.dismiss) var dismiss
     @Namespace var animation
     
+    init(user: User) {
+        self.viewModel = MyPageViewModel(user: user)
+    }
+    
     var body: some View {
-        if let user = viewModel.currentUser {
+        if let user = authviewModel.currentUser {
             NavigationStack {
                 VStack(alignment: .leading) {
                     // headerView
@@ -73,7 +78,7 @@ extension MyPageView {
             }
             
             Button {
-                viewModel.signOut()
+                authviewModel.signOut()
             } label: {
                 Text("로그아웃")
                     .font(.subheadline).bold()
@@ -120,8 +125,8 @@ extension MyPageView {
     var recipesView: some View {
         ScrollView {
             LazyVStack {
-                ForEach( 0...20, id: \.self) { _ in
-//                    RecipeRowView(recipe:)
+                ForEach(viewModel.recipes) { recipe in
+                    RecipeRowView(recipe: recipe)
                 }
             }
         }

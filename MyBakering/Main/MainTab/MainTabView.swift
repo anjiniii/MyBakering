@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         TabView {
             FeedView()
@@ -24,11 +26,12 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "highlighter")
                 }
-            
-            MyPageView()
-                .tabItem {
-                    Image(systemName: "person.crop.circle.fill")
-                }
+            if let user = authViewModel.currentUser {
+                MyPageView(user: user)
+                    .tabItem {
+                        Image(systemName: "person.crop.circle.fill")
+                    }
+            }
         }
     }
 }
