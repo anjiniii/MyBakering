@@ -14,20 +14,22 @@ struct MyPageView: View {
     @Namespace var animation
     
     var body: some View {
-        VStack(alignment: .leading) {
-            headerView
-            
-            actionButtons
-            
-            Text("이오이오링")
-                .font(.title).bold()
-                .padding(.horizontal, 20)
-            
-            myPageFilterBar
-            
-            recipesView
-            
-            Spacer()
+        if let user = viewModel.currentUser {
+            VStack(alignment: .leading) {
+                headerView
+                
+                actionButtons
+                
+                Text(user.nickname)
+                    .font(.title).bold()
+                    .padding(.horizontal, 20)
+                
+                myPageFilterBar
+                
+                recipesView
+                
+                Spacer()
+            }
         }
     }
 }
