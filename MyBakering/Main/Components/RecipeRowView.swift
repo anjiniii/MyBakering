@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeRowView: View {
     let recipe: Recipe
@@ -13,9 +14,11 @@ struct RecipeRowView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 20) {
-                RoundedRectangle(cornerRadius: 16)
+                KFImage(URL(string: recipe.recipeImageUrl))
+                    .resizable()
+                    .scaledToFill()
                     .frame(width: 100, height: 100)
-                    .foregroundColor(Color.accentColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
                 
                 VStack(alignment: .leading, spacing: 6) {
                     HStack {
