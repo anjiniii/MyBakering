@@ -60,13 +60,7 @@ struct ProfileEditView: View {
                 Button {
                     viewModel.uploadProfileImage(selectedImage)
                 } label: {
-                    Text("저장하기")
-                        .font(.headline).bold()
-                        .foregroundColor(.white)
-                        .frame(width: 340, height: 50)
-                        .background(Color.accentColor)
-                        .clipShape(Capsule())
-                        .padding()
+                    CapsuleButtonView(text: "저장하기")
                 }
                 .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
             }

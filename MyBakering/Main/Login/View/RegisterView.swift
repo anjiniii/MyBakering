@@ -34,13 +34,7 @@ struct RegisterView: View {
                                        nickname: nickname,
                                        password: password)
                 } label: {
-                    Text("시작하기")
-                        .font(.headline).bold()
-                        .foregroundColor(.white)
-                        .frame(width: 340, height: 50)
-                        .background(Color.accentColor)
-                        .clipShape(Capsule())
-                        .padding()
+                    CapsuleButtonView(text: "시작하기")
                 }
                 .shadow(color: .gray.opacity(0.5), radius: 10)
                 

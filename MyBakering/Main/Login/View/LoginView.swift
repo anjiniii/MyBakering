@@ -30,13 +30,7 @@ struct LoginView: View {
                 Button {
                     viewModel.login(withEmail: email, password: password)
                 } label: {
-                    Text("로그인")
-                        .font(.headline).bold()
-                        .foregroundColor(.white)
-                        .frame(width: 340, height: 50)
-                        .background(Color.accentColor)
-                        .clipShape(Capsule())
-                        .padding()
+                    CapsuleButtonView(text: "로그인")
                 }
                 .shadow(color: .gray.opacity(0.5), radius: 10)
                 
