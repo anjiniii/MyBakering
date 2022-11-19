@@ -61,7 +61,7 @@ struct NewRecipeView: View {
                         .listRowBackground(Color.accentColor)
                         .foregroundColor(.white)
                     TextField("이름", text: $name)
-                    TextField("설명", text: $description)
+                    TextField("설명", text: $description, axis: .vertical)
                     
                     Picker("카테고리", selection: $selectedCategory) {
                         ForEach(categories, id: \.self) { Text($0) }
@@ -74,7 +74,7 @@ struct NewRecipeView: View {
                         .font(.headline)
                         .listRowBackground(Color.accentColor)
                         .foregroundColor(.white)
-                    TextField("재료", text: $newIngredient)
+                    TextField("재료", text: $newIngredient, axis: .vertical)
 //                    TextField("양", text: $newVolume)
                     Button {
                         addIngredient(ingredient: newIngredient)
