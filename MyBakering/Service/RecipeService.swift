@@ -60,4 +60,15 @@ struct RecipeService {
                     completion(recipes.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
                 }
         }
+    
+    func fetchRecipes(forCategory category: String, completion: @escaping([Recipe]) -> Void) {
+            Firestore.firestore().collection("recipes")
+                .whereField("selectedCategory", isEqualTo: category)
+                .getDocuments { snapshot, error in
+                    guard let documents = snapshot?.documents else { return }
+                    
+                    let recipes = documents.compactMap({ try? $0.data(as: Recipe.self)}) as! [Recipe]
+                    completion(recipes.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
+                }
+        }
 }

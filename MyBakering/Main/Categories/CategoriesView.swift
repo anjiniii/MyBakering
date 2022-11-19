@@ -8,24 +8,28 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
-        NavigationStack {
-            VStack {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(CategoriesViewModel.allCases, id: \.rawValue) { item in
-                            NavigationLink {
-                                FeedView()
-                            } label: {
-                                CategoryRowView(item: item)
-                                    .padding(.horizontal, 24)
-                                    .padding(.vertical, 8)
+        if let user = authViewModel.currentUser {
+            NavigationStack {
+                VStack {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(CategoriesViewModel.allCases, id: \.rawValue) { item in
+                                NavigationLink {
+                                    CategoryFeedView(user: user, category: item.title)
+                                } label: {
+                                    CategoryRowView(item: item)
+                                        .padding(.horizontal, 24)
+                                        .padding(.vertical, 8)
+                                }
                             }
                         }
                     }
                 }
+                .navigationTitle("카테고리")
             }
-            .navigationTitle("카테고리")
         }
     }
 }

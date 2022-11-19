@@ -32,6 +32,8 @@
 		51AD2E9C2927962000460937 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E9B2927962000460937 /* Recipe.swift */; };
 		51AD2E9E29279CFF00460937 /* RecipeImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E9D29279CFF00460937 /* RecipeImageUploader.swift */; };
 		51AD2EA02927AD0F00460937 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E9F2927AD0F00460937 /* MyPageViewModel.swift */; };
+		51AD2EA22927AFF600460937 /* CategoryFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EA12927AFF600460937 /* CategoryFeedViewModel.swift */; };
+		51AD2EA52927B1C200460937 /* CategoryFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EA42927B1C200460937 /* CategoryFeedView.swift */; };
 		51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */; };
 		51CC8DB22924C3E800718A19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DB12924C3E800718A19 /* ContentView.swift */; };
 		51CC8DB42924C3E800718A19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CC8DB32924C3E800718A19 /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		51AD2E9B2927962000460937 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		51AD2E9D29279CFF00460937 /* RecipeImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeImageUploader.swift; sourceTree = "<group>"; };
 		51AD2E9F2927AD0F00460937 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		51AD2EA12927AFF600460937 /* CategoryFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeedViewModel.swift; sourceTree = "<group>"; };
+		51AD2EA42927B1C200460937 /* CategoryFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeedView.swift; sourceTree = "<group>"; };
 		51CC8DAC2924C3E800718A19 /* MyBakering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBakering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBakeringApp.swift; sourceTree = "<group>"; };
 		51CC8DB12924C3E800718A19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +159,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		51AD2EA32927B19D00460937 /* CategoryFeed */ = {
+			isa = PBXGroup;
+			children = (
+				51AD2EA12927AFF600460937 /* CategoryFeedViewModel.swift */,
+				51AD2EA42927B1C200460937 /* CategoryFeedView.swift */,
+			);
+			path = CategoryFeed;
+			sourceTree = "<group>";
+		};
 		51CC8DA32924C3E800718A19 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +212,7 @@
 		51CC8DBD2924C47D00718A19 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				51AD2EA32927B19D00460937 /* CategoryFeed */,
 				51CC8DBE2924C48800718A19 /* Components */,
 				51AD2E692926089000460937 /* Recipe */,
 				51AD2E622925FDA900460937 /* Login */,
@@ -224,8 +238,8 @@
 		51CC8DC12924C91500718A19 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				51CC8DC32924C95100718A19 /* FeedView.swift */,
 				51AD2E992927956B00460937 /* FeedViewModel.swift */,
+				51CC8DC32924C95100718A19 /* FeedView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -241,8 +255,8 @@
 		51CC8DC92924CD0900718A19 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				51CC8DD02924CE3700718A19 /* CategoriesView.swift */,
 				51CC8DD62924DC8500718A19 /* CategoriesViewModel.swift */,
+				51CC8DD02924CE3700718A19 /* CategoriesView.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -372,6 +386,7 @@
 				51AD2E9A2927956B00460937 /* FeedViewModel.swift in Sources */,
 				51AD2E642925FDC300460937 /* LoginHeaderView.swift in Sources */,
 				51AD2E68292602FD00460937 /* RegisterView.swift in Sources */,
+				51AD2EA22927AFF600460937 /* CategoryFeedViewModel.swift in Sources */,
 				51AD2E8B2927536900460937 /* ProfileEditView.swift in Sources */,
 				51AD2E8929273FF400460937 /* UserService.swift in Sources */,
 				51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */,
@@ -379,6 +394,7 @@
 				51AD2E8F2927740300460937 /* ProfileImageUploader.swift in Sources */,
 				51CC8DCD2924CE2000718A19 /* MyPageView.swift in Sources */,
 				51AD2E94292785C600460937 /* CapsuleButtonView.swift in Sources */,
+				51AD2EA52927B1C200460937 /* CategoryFeedView.swift in Sources */,
 				51AD2E7D2926522D00460937 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

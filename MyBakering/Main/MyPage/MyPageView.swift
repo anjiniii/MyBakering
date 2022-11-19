@@ -38,8 +38,8 @@ struct MyPageView: View {
                                 .renderingMode(.template)
                                 .foregroundColor(Color.myBrown)
                                 .background(Color.white)
-                                .modifier(ProfileImageModifier())
                                 .overlay(Circle().stroke(Color.gray, lineWidth: 1))
+                                .modifier(ProfileImageModifier())
                         }
                         
                     }
