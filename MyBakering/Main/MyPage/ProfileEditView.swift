@@ -12,6 +12,7 @@ struct ProfileEditView: View {
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    @State private var isSaved = false
     
 //    @State private var editUserNickname = false
 //    @State private var newNickname = ""
@@ -19,66 +20,87 @@ struct ProfileEditView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        VStack {
-            LoginHeaderView(title: "프로필 편집")
-            
-            profileImageView
-            
-            // edit nickname
-//            HStack {
-//                if editUserNickname {
-//                    TextEditor(text: $newNickname)
-//                        .frame(width: 240, height: 50)
-//                        .background(Color.myGray)
-//                        .overlay(Capsule()
-//                            .foregroundColor(Color.accentColor)
-//                            .frame(height: 3)
-//                            .offset(y: 25)
-//                        )
-//
-//                    if newNickname.isEmpty {
-//                        Text(viewModel.currentUser?.nickname ?? "")
-//                            .foregroundColor(Color(.placeholderText))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 12)
-//                    }
-//                } else {
-//                    Text(viewModel.currentUser?.nickname ?? "user nickname")
-//                        .foregroundColor(.myDarkBrown)
-//                    Button {
-//                        editUserNickname.toggle()
-//                    } label: {
-//                        Image(systemName: "pencil")
-//                            .foregroundColor(Color.gray)
-//                    }
-//                }
-//            }
-//            .font(.title).bold()
-//            .padding(24)
-            
-            if let selectedImage = selectedImage {
-                Button {
-                    viewModel.uploadProfileImage(selectedImage)
-                } label: {
-                    CapsuleButtonView(text: "저장하기")
+        ZStack {
+            VStack {
+                LoginHeaderView(title: "프로필 편집")
+                
+                profileImageView
+                
+                // edit nickname
+                //            HStack {
+                //                if editUserNickname {
+                //                    TextEditor(text: $newNickname)
+                //                        .frame(width: 240, height: 50)
+                //                        .background(Color.myGray)
+                //                        .overlay(Capsule()
+                //                            .foregroundColor(Color.accentColor)
+                //                            .frame(height: 3)
+                //                            .offset(y: 25)
+                //                        )
+                //
+                //                    if newNickname.isEmpty {
+                //                        Text(viewModel.currentUser?.nickname ?? "")
+                //                            .foregroundColor(Color(.placeholderText))
+                //                            .padding(.horizontal, 8)
+                //                            .padding(.vertical, 12)
+                //                    }
+                //                } else {
+                //                    Text(viewModel.currentUser?.nickname ?? "user nickname")
+                //                        .foregroundColor(.myDarkBrown)
+                //                    Button {
+                //                        editUserNickname.toggle()
+                //                    } label: {
+                //                        Image(systemName: "pencil")
+                //                            .foregroundColor(Color.gray)
+                //                    }
+                //                }
+                //            }
+                //            .font(.title).bold()
+                //            .padding(24)
+                
+                if let selectedImage = selectedImage {
+                    Button {
+                        viewModel.uploadProfileImage(selectedImage)
+                        isSaved = true
+                    } label: {
+                        CapsuleButtonView(text: "저장하기")
+                    }
+                    .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
                 }
-                .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
+                
+                Spacer()
             }
-            
-            Spacer()
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
+        
+        toastView
+    }
+    
+    private var toastView: some View {
+        VStack {
+            Spacer()
+            
+            if isSaved {
+                Text("저장되었습니다")
+                    .foregroundColor(.white).bold()
+                    .padding()
+                    .background(Color.myLightBrown)
+                    .cornerRadius(16)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            isSaved = false
+                        }
+                    }
+            }
+        }
+        .padding(.bottom, 64)
+        .animation(.linear(duration: 0.3), value: isSaved)
+        .transition(.opacity)
     }
     
     func loadImage() {
         guard let selectedImage = selectedImage else { return }
         profileImage = Image(uiImage: selectedImage)
-    }
-}
-
-struct ProfileEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileEditView()
     }
 }
 
