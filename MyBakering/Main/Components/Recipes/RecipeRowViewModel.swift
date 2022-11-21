@@ -35,4 +35,10 @@ class RecipeRowViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteRecipe() {
+        service.deleteRecipes(recipe) {
+            
+        }
+    }
 }

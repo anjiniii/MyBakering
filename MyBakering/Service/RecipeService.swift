@@ -71,6 +71,14 @@ struct RecipeService {
                     completion(recipes.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
                 }
         }
+    
+    func deleteRecipes(_ recipe: Recipe, completion: @escaping() -> Void) {
+        guard let recipeId = recipe.id else { return }
+        
+        Firestore.firestore().collection("recipes").document(recipeId).delete() { _ in
+            
+        }
+    }
 }
 
 extension RecipeService {

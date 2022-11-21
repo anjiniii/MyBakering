@@ -10,6 +10,9 @@ import Kingfisher
 
 struct RecipeView: View {
     @ObservedObject var viewModel: RecipeRowViewModel
+    @EnvironmentObject var authviewModel: AuthViewModel
+    @State private var showDeleteRecipeDialog = false
+    @Environment(\.dismiss) var dismiss
     
     init(recipe: Recipe) {
         self.viewModel = RecipeRowViewModel(recipe: recipe)
@@ -101,14 +104,37 @@ struct RecipeView: View {
                 
                 Spacer()
                 
-                Button {
-                    (viewModel.recipe.didBookmark ?? false) ?
-                    viewModel.unBookmarkRecipe() :
-                    viewModel.bookmarkRecipe()
-                } label: {
-                    Image(systemName: (viewModel.recipe.didBookmark ?? false) ? "bookmark.fill" : "bookmark")
+                HStack {
+                    Button {
+                        (viewModel.recipe.didBookmark ?? false) ?
+                        viewModel.unBookmarkRecipe() :
+                        viewModel.bookmarkRecipe()
+                    } label: {
+                        Image(systemName: (viewModel.recipe.didBookmark ?? false) ? "bookmark.fill" : "bookmark")
+                    }
+                    .padding(.horizontal)
+                    
+                    if let user = authviewModel.currentUser?.id {
+                        if viewModel.recipe.user?.id == user {
+                            Button {
+                                showDeleteRecipeDialog = true
+                            } label: {
+                                Image(systemName: "trash.fill")
+                            }
+                            .confirmationDialog("레시피 삭제",
+                                                isPresented: $showDeleteRecipeDialog,
+                                                titleVisibility: .visible) {
+                                Button("삭제하기", role: .destructive) {
+                                    viewModel.deleteRecipe()
+                                    dismiss()
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
+                            } message: {
+                                Text("\(viewModel.recipe.name) 레시피를 정말 삭제하시겠습니까?")
+                            }
+                        }
+                    }
                 }
-                .padding(.horizontal)
             }
             .padding(.vertical)
             
