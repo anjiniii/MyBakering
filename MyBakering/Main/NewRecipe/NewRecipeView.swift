@@ -24,6 +24,7 @@ struct NewRecipeView: View {
     @State private var selectedImage: UIImage?
     @State private var recipeImage: Image?
     
+    @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -67,6 +68,7 @@ struct NewRecipeView: View {
                         ForEach(categories, id: \.self) { Text($0) }
                     }
                 }
+                .focused($textFieldIsFocused)
                 
                 // 재료 추가
                 Section {
@@ -75,6 +77,7 @@ struct NewRecipeView: View {
                         .listRowBackground(Color.accentColor)
                         .foregroundColor(.white)
                     TextField("재료", text: $newIngredient, axis: .vertical)
+                        .focused($textFieldIsFocused)
 //                    TextField("양", text: $newVolume)
                     Button {
                         addIngredient(ingredient: newIngredient)
@@ -126,6 +129,7 @@ struct NewRecipeView: View {
                         Image(systemName: "\(steps.count + 1).square.fill")
                             .foregroundColor(Color.myLightBrown)
                         TextField("과정", text: $newStep, axis: .vertical)
+                            .focused($textFieldIsFocused)
                     }
                     Button {
                         addStep(step: newStep)
@@ -186,7 +190,12 @@ struct NewRecipeView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
-                
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("완료") {
+                        textFieldIsFocused = false
+                    }
+                }
             }
             .scrollContentBackground(.hidden)
             .background(Color.myGray)
@@ -242,6 +251,7 @@ struct NewRecipeView: View {
         self.ingredients = [String]()
         self.steps = [String]()
         self.recipeImage = nil
+        self.textFieldIsFocused = false
     }
     
     func loadImage() {
