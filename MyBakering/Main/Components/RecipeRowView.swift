@@ -25,6 +25,7 @@ struct RecipeRowView: View {
                         Text(recipe.name)
                             .font(.title3).bold()
                             .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
                         
                         Spacer()
                         
@@ -38,6 +39,7 @@ struct RecipeRowView: View {
                     Text(recipe.description)
                         .font(.subheadline)
                         .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
                     if let user = recipe.user {
                         HStack {
                             Image(systemName: "person.fill")
