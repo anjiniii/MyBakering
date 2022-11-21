@@ -12,11 +12,10 @@ struct CategoryRowView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            Circle()
-//                .resizable()
-//                .scaledToFill()
-//                .clipShape(Circle())
-                .foregroundColor(Color(.systemBrown))
+            Image("category_\(item.description)")
+                .resizable()
+                .scaledToFill()
+                .clipShape(Circle())
                 .frame(width: 56, height: 56)
             
             VStack(alignment: .leading, spacing: 4) {
