@@ -26,7 +26,7 @@ class CategoryFeedViewModel: ObservableObject {
                 let uid = recipes[i].uid
                 
                 self.userService.fetchUser(withUid: uid) { user in
-                    self.recipes[i].user = self.user
+                    self.recipes[i].user = user
                 }
             }
         }

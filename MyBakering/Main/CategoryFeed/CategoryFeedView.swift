@@ -24,7 +24,7 @@ struct CategoryFeedView: View {
                         NavigationLink {
                             RecipeView(recipe: recipe)
                         } label: {
-                            CategoryRecipeRowView(recipe: recipe)
+                            RecipeRowView(recipe: recipe)
                         }
                     }
                 }
