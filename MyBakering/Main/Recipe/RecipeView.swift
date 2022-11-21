@@ -9,34 +9,18 @@ import SwiftUI
 import Kingfisher
 
 struct RecipeView: View {
-    let recipe: Recipe
-    var ingredients = [["버터", "100g"],
-                       ["올리고당", "20g"],
-                       ["박력분", "1.5컵"],
-                       ["베이킹파우더", "2g"],
-                       ["황설탕", "60g"],
-                       ["계란", "1개"],
-                       ["코코아가루", "15g"],
-                       ["초코칩", "80g"]]
-    var steps = ["버터를 풀어준다",
-                 "풀어준 버터에 설탕을 넣고 섞는다",
-                 "올리고당을 넣고 섞는다",
-                 "계란을 넣고 섞는다",
-                 "박력분+코코아가루+베이킹파우더를 체쳐넣고 섞는다",
-                 "초코칩을 넣고 섞는다",
-                 "한 스푼씩 떠서 눌러 준 후",
-                 "오븐(180℃)에서 10~12분간 굽는다",
-                 "촉촉한 초코칩쿠키",
-                 "속은 촉촉하고 겉은 바삭까지는 아니지만 맛있어요",
-                 "우유에 콕 찍어먹어도 맛있구 아이들 간식으로 제격이에요"]
-    var count = 1
+    @ObservedObject var viewModel: RecipeRowViewModel
+    
+    init(recipe: Recipe) {
+        self.viewModel = RecipeRowViewModel(recipe: recipe)
+    }
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 ScrollView {
                     VStack {
-                        KFImage(URL(string: recipe.recipeImageUrl))
+                        KFImage(URL(string: viewModel.recipe.recipeImageUrl))
                             .resizable()
                             .scaledToFill()
                             .frame(width: geometry.size.width, height: 300)
@@ -58,10 +42,10 @@ struct RecipeView: View {
                                 LazyVGrid(columns: [GridItem(.fixed(160)), GridItem(.fixed(160))],
                                           alignment: .center,
                                           spacing: 10) {
-                                    ForEach(0 ..< recipe.ingredients.count, id: \.self) { i in
+                                    ForEach(0 ..< viewModel.recipe.ingredients.count, id: \.self) { i in
                                         VStack(spacing: 4) {
                                             HStack(alignment: .top) {
-                                                Text(recipe.ingredients[i])
+                                                Text(viewModel.recipe.ingredients[i])
                                                 Spacer()
                                             }
                                             Divider()
@@ -78,11 +62,11 @@ struct RecipeView: View {
                                 Text("과정")
                                     .font(.title3)
                                 
-                                ForEach(0 ..< recipe.steps.count, id: \.self) { i in
+                                ForEach(0 ..< viewModel.recipe.steps.count, id: \.self) { i in
                                     HStack(alignment: .top) {
                                         Image(systemName: "\(i+1).square.fill")
                                             .foregroundColor(Color.myLightBrown)
-                                        Text(recipe.steps[i])
+                                        Text(viewModel.recipe.steps[i])
                                     }
                                 }
                                 
@@ -100,26 +84,39 @@ struct RecipeView: View {
                     .ignoresSafeArea()
                 }
             }
-            .navigationTitle(recipe.name)
+            .navigationTitle(viewModel.recipe.name)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
     
     var recipeInfo: some View {
         Group {
-            HStack(alignment: .bottom, spacing: 20) {
-                Text(recipe.name)
-                    .font(.title).bold()
-                Text(recipe.selectedCategory)
-                    .foregroundColor(Color.accentColor)
+            HStack(alignment: .top) {
+                HStack(alignment: .bottom, spacing: 20) {
+                    Text(viewModel.recipe.name)
+                        .font(.title).bold()
+                    Text(viewModel.recipe.selectedCategory)
+                        .foregroundColor(Color.accentColor)
+                }
+                
+                Spacer()
+                
+                Button {
+                    (viewModel.recipe.didBookmark ?? false) ?
+                    viewModel.unBookmarkRecipe() :
+                    viewModel.bookmarkRecipe()
+                } label: {
+                    Image(systemName: (viewModel.recipe.didBookmark ?? false) ? "bookmark.fill" : "bookmark")
+                }
+                .padding(.horizontal)
             }
             .padding(.vertical)
             
-            Text(recipe.description)
+            Text(viewModel.recipe.description)
             
             HStack {
                 Image(systemName: "person.fill")
-                Text(recipe.user?.nickname ?? "")
+                Text(viewModel.recipe.user?.nickname ?? "")
             }
             .font(.footnote)
             .foregroundColor(Color.accentColor)
