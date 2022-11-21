@@ -30,8 +30,10 @@ struct CategoryFeedView: View {
                 }
             }
             .navigationTitle(category)
-            .onAppear {
-                viewModel.fetchCategoryRecipes(category: category)
+            .refreshable {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    viewModel.fetchCategoryRecipes(category: category)
+                }
             }
         }
     }
