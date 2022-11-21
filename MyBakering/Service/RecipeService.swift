@@ -82,7 +82,6 @@ extension RecipeService {
         
         userBookmarkRef.document(recipeId).setData([:]) { _ in
             completion()
-            print("DEBUG: Did like tweet and now we update UI")
         }
     }
     
@@ -98,21 +97,18 @@ extension RecipeService {
     }
     
     func checkIfUserBookmarkRecipe(_ recipe: Recipe, completion: @escaping(Bool) -> Void) {
-        print("RecipeService_checkIfUserBookmarkRecipe")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let recipeId = recipe.id else { return }
         
         Firestore.firestore().collection("users").document(uid).collection("user-bookmarks")
             .document(recipeId).getDocument { snapshot, _ in
                 guard let snapshot = snapshot else { return }
-                print("RecipeService_checkIsUserBookmarkRecipe is liked : \(snapshot.exists)")
                 completion(snapshot.exists)
             }
     }
     
     func fetchBookmarkedRecipes(foruid uid: String, completion: @escaping([Recipe]) -> Void) {
         var recipes = [Recipe]()
-        print("fetchBookmarkedRecipes")
         Firestore.firestore().collection("users").document(uid)
             .collection("user-bookmarks").getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
@@ -125,7 +121,7 @@ extension RecipeService {
                             guard let recipe = try? snapshot?.data(as: Recipe.self) else { return }
                             recipes.append(recipe)
                             
-                            completion(recipes)
+                            completion(recipes.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
                         }
                 }
         }

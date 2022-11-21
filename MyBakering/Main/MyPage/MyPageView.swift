@@ -61,6 +61,12 @@ struct MyPageView: View {
             .onAppear {
                 viewModel.fetchUserRecipes()
             }
+            .refreshable {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    viewModel.fetchUserRecipes()
+                    viewModel.fetchBookmarkedRecipes()
+                }
+            }
         }
     }
 }
