@@ -16,14 +16,17 @@ struct FeedView: View {
                 LazyVStack {
                     ForEach(viewModel.recipes) { recipe in
                         NavigationLink {
-                            RecipeView()
+                            RecipeView(recipe: recipe)
                         } label: {
                             RecipeRowView(recipe: recipe)
                         }
                     }
                 }
             }
-            .navigationTitle("Recipes")
+            .navigationTitle("레시피")
+            .onAppear {
+                viewModel.fetchRecipes()
+            }
         }
     }
 }

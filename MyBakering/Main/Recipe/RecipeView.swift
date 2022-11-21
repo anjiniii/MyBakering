@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct RecipeView: View {
+    let recipe: Recipe
     var ingredients = [["버터", "100g"],
                        ["올리고당", "20g"],
                        ["박력분", "1.5컵"],
@@ -30,86 +32,94 @@ struct RecipeView: View {
     var count = 1
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Image("cookie_photo")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 300)
-                
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack{ Spacer() }
-                    
-                    recipeInfo
-                    
-                    Divider()
-                    
-                    // 재료
-                    VStack(alignment: .leading) {
-                        Text("재료")
-                            .font(.title3)
-                            .padding(.bottom)
+        NavigationStack {
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack {
+                        KFImage(URL(string: recipe.recipeImageUrl))
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: geometry.size.width, height: 300)
+                            .clipShape(Rectangle())
                         
-                        LazyVGrid(columns: [GridItem(.fixed(160)), GridItem(.fixed(160))],
-                                  alignment: .center,
-                                  spacing: 10) {
-                            ForEach(0 ..< ingredients.count, id: \.self) { i in
-                                VStack(spacing: 4) {
-                                    HStack(alignment: .top) {
-                                        Text(ingredients[i][0])
-                                        Spacer()
-                                        Text(ingredients[i][1])
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack{ Spacer() }
+                            
+                            recipeInfo
+                            
+                            Divider()
+                            
+                            // 재료
+                            VStack(alignment: .leading) {
+                                Text("재료")
+                                    .font(.title3)
+                                    .padding(.bottom)
+                                
+                                LazyVGrid(columns: [GridItem(.fixed(160)), GridItem(.fixed(160))],
+                                          alignment: .center,
+                                          spacing: 10) {
+                                    ForEach(0 ..< recipe.ingredients.count, id: \.self) { i in
+                                        VStack(spacing: 4) {
+                                            HStack(alignment: .top) {
+                                                Text(recipe.ingredients[i])
+                                                Spacer()
+                                            }
+                                            Divider()
+                                        }
                                     }
-                                    Divider()
                                 }
                             }
-                        }
-                    }
-                    .padding(.vertical)
-                    
-                    Divider()
-                    
-                    // 과정
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("과정")
-                            .font(.title3)
-                        
-                        ForEach(0 ..< steps.count, id: \.self) { i in
-                            HStack(alignment: .top) {
-                                Image(systemName: "\(i+1).square.fill")
-                                    .foregroundColor(Color.myLightBrown)
-                                Text(steps[i])
+                            .padding(.vertical)
+                            
+                            Divider()
+                            
+                            // 과정
+                            VStack(alignment: .leading, spacing: 16) {
+                                Text("과정")
+                                    .font(.title3)
+                                
+                                ForEach(0 ..< recipe.steps.count, id: \.self) { i in
+                                    HStack(alignment: .top) {
+                                        Image(systemName: "\(i+1).square.fill")
+                                            .foregroundColor(Color.myLightBrown)
+                                        Text(recipe.steps[i])
+                                    }
+                                }
+                                
                             }
+                            .padding(.vertical)
+                            
                         }
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(RecipeRoundedShape(coners: [.topLeft, .topRight]))
+                        .offset(y: -30)
                         
                     }
-                    .padding(.vertical)
-                    
+                    .offset(y: -100)
+                    .ignoresSafeArea()
                 }
-                .padding()
-                .background(Color.white)
-                .clipShape(RecipeRoundedShape(coners: [.topLeft, .topRight]))
             }
-            .offset(y: -140)
-            .ignoresSafeArea()
+            .navigationTitle(recipe.name)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
     var recipeInfo: some View {
         Group {
             HStack(alignment: .bottom, spacing: 20) {
-                Text("초코칩 쿠키")
+                Text(recipe.name)
                     .font(.title).bold()
-                Text("쿠키")
+                Text(recipe.selectedCategory)
                     .foregroundColor(Color.accentColor)
             }
             .padding(.vertical)
             
-            Text("네모난 초코칩이 촉촉촉 초코 초코 초코칩 냠냠")
+            Text(recipe.description)
             
             HStack {
                 Image(systemName: "person.fill")
-                Text("이오이오링")
+                Text(recipe.user?.nickname ?? "")
             }
             .font(.footnote)
             .foregroundColor(Color.accentColor)
@@ -124,11 +134,5 @@ struct RecipeRoundedShape: Shape {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: coners, cornerRadii: CGSize(width: 20, height: 20))
         
         return Path(path.cgPath)
-    }
-}
-
-struct RecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeView()
     }
 }

@@ -58,6 +58,9 @@ struct MyPageView: View {
                     Spacer()
                 }
             }
+            .onAppear {
+                viewModel.fetchUserRecipes()
+            }
         }
     }
 }
