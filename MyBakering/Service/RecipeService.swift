@@ -72,3 +72,62 @@ struct RecipeService {
                 }
         }
 }
+
+extension RecipeService {
+    func bookmarkRecipe(_ recipe: Recipe, completion: @escaping() -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let recipeId = recipe.id else { return }
+        
+        let userBookmarkRef = Firestore.firestore().collection("users").document(uid).collection("user-bookmarks")
+        
+        userBookmarkRef.document(recipeId).setData([:]) { _ in
+            completion()
+            print("DEBUG: Did like tweet and now we update UI")
+        }
+    }
+    
+    func unBookmarkRecipe(_ recipe: Recipe, completion: @escaping() -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let recipeId = recipe.id else { return }
+        
+        let userBookmarkRef = Firestore.firestore().collection("users").document(uid).collection("user-bookmarks")
+        
+        userBookmarkRef.document(recipeId).delete() { _ in
+            completion()
+        }
+    }
+    
+    func checkIfUserBookmarkRecipe(_ recipe: Recipe, completion: @escaping(Bool) -> Void) {
+        print("RecipeService_checkIfUserBookmarkRecipe")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let recipeId = recipe.id else { return }
+        
+        Firestore.firestore().collection("users").document(uid).collection("user-bookmarks")
+            .document(recipeId).getDocument { snapshot, _ in
+                guard let snapshot = snapshot else { return }
+                print("RecipeService_checkIsUserBookmarkRecipe is liked : \(snapshot.exists)")
+                completion(snapshot.exists)
+            }
+    }
+    
+    func fetchBookmarkedRecipes(foruid uid: String, completion: @escaping([Recipe]) -> Void) {
+        var recipes = [Recipe]()
+        print("fetchBookmarkedRecipes")
+        Firestore.firestore().collection("users").document(uid)
+            .collection("user-bookmarks").getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                
+                documents.forEach { document in
+                    let recipeId = document.documentID
+                    
+                    Firestore.firestore().collection("recipes").document(recipeId)
+                        .getDocument { snapshot, _ in
+                            guard let recipe = try? snapshot?.data(as: Recipe.self) else { return }
+                            recipes.append(recipe)
+                            
+                            completion(recipes)
+                        }
+                }
+        }
+    }
+}

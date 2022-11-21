@@ -20,4 +20,5 @@ struct Recipe: Identifiable, Decodable {
     let timestamp: Timestamp
     
     var user: User?
+    var didBookmark: Bool? = false
 }

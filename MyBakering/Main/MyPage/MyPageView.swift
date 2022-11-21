@@ -128,7 +128,7 @@ extension MyPageView {
     var recipesView: some View {
         ScrollView {
             LazyVStack {
-                ForEach(viewModel.recipes) { recipe in
+                ForEach(viewModel.recipes(forfilter: self.selectedFilter)) { recipe in
                     NavigationLink {
                         RecipeView(recipe: recipe)
                     } label: {
