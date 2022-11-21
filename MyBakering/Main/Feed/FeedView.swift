@@ -24,8 +24,10 @@ struct FeedView: View {
                 }
             }
             .navigationTitle("레시피")
-            .onAppear {
-                viewModel.fetchRecipes()
+            .refreshable {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    viewModel.fetchRecipes()
+                }
             }
         }
     }
