@@ -10,6 +10,7 @@ import Foundation
 class CategoryFeedViewModel: ObservableObject {
     @Published var recipes = [Recipe]()
     private let service = RecipeService()
+    private let userService = UserService()
     let user: User
     
     init(user: User, category: String) {
@@ -22,7 +23,11 @@ class CategoryFeedViewModel: ObservableObject {
             self.recipes = recipes
             
             for i in 0 ..< recipes.count {
-                self.recipes[i].user = self.user
+                let uid = recipes[i].uid
+                
+                self.userService.fetchUser(withUid: uid) { user in
+                    self.recipes[i].user = self.user
+                }
             }
         }
     }
