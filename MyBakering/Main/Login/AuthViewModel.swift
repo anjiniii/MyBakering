@@ -51,6 +51,8 @@ class AuthViewModel: ObservableObject {
                 .setData(data) { _ in
                     
                 }
+            
+            self.fetchUser()
         }
     }
     
