@@ -94,19 +94,6 @@ struct NewRecipeView: View {
                     Text("'Edit' 버튼을 눌러 재료와 과정을 수정할 수 있습니다.")
                 }
                 
-                // 재료
-//                Section {
-//                    ForEach(0 ..< ingredients.count, id: \.self) { i in
-//                        HStack {
-//                            Text(ingredients[i][0])
-//                            Text(ingredients[i][1])
-//                        }
-//                    }
-//                    .onDelete(perform: deleteIngredient)
-//                    .onMove(perform: moveIngredient)
-//                } header: {
-//                    ingredients.count == 0 ? Text("") : Text("재료")
-//                }
                 Section {
                     ForEach(0 ..< ingredients.count, id: \.self) { i in
                         HStack {
@@ -201,17 +188,6 @@ struct NewRecipeView: View {
             .background(Color.myGray)
         }
     }
-    
-//    private func addIngredient(ingredient: String, volume: String) {
-//        self.ingredient.append(ingredient)
-//        self.ingredient.append(volume)
-//
-//        self.ingredients.append(self.ingredient)
-//
-//        self.ingredient = [String]()
-//        self.newIngredient = ""
-//        self.newVolume = ""
-//    }
     
     private func addIngredient(ingredient: String) {
         self.ingredients.append(ingredient)

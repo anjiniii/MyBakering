@@ -34,9 +34,3 @@ struct CategoryRowView: View {
         .padding(.vertical, 4)
     }
 }
-
-//struct CategoryRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CategoryRowView()
-//    }
-//}

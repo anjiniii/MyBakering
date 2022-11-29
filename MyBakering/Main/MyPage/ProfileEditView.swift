@@ -14,9 +14,6 @@ struct ProfileEditView: View {
     @State private var profileImage: Image?
     @State private var isSaved = false
     
-//    @State private var editUserNickname = false
-//    @State private var newNickname = ""
-    
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
@@ -25,38 +22,6 @@ struct ProfileEditView: View {
                 LoginHeaderView(title: "프로필 편집")
                 
                 profileImageView
-                
-                // edit nickname
-                //            HStack {
-                //                if editUserNickname {
-                //                    TextEditor(text: $newNickname)
-                //                        .frame(width: 240, height: 50)
-                //                        .background(Color.myGray)
-                //                        .overlay(Capsule()
-                //                            .foregroundColor(Color.accentColor)
-                //                            .frame(height: 3)
-                //                            .offset(y: 25)
-                //                        )
-                //
-                //                    if newNickname.isEmpty {
-                //                        Text(viewModel.currentUser?.nickname ?? "")
-                //                            .foregroundColor(Color(.placeholderText))
-                //                            .padding(.horizontal, 8)
-                //                            .padding(.vertical, 12)
-                //                    }
-                //                } else {
-                //                    Text(viewModel.currentUser?.nickname ?? "user nickname")
-                //                        .foregroundColor(.myDarkBrown)
-                //                    Button {
-                //                        editUserNickname.toggle()
-                //                    } label: {
-                //                        Image(systemName: "pencil")
-                //                            .foregroundColor(Color.gray)
-                //                    }
-                //                }
-                //            }
-                //            .font(.title).bold()
-                //            .padding(24)
                 
                 if let selectedImage = selectedImage {
                     Button {

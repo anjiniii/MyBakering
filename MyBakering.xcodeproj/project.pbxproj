@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51AD2E5E2925F38700460937 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E5D2925F38700460937 /* Ingredient.swift */; };
 		51AD2E612925FAD500460937 /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E602925FAD500460937 /* ColorExtention.swift */; };
 		51AD2E642925FDC300460937 /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E632925FDC300460937 /* LoginHeaderView.swift */; };
 		51AD2E662925FF4500460937 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E652925FF4500460937 /* LoginView.swift */; };
@@ -34,7 +33,6 @@
 		51AD2EA02927AD0F00460937 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2E9F2927AD0F00460937 /* MyPageViewModel.swift */; };
 		51AD2EA22927AFF600460937 /* CategoryFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EA12927AFF600460937 /* CategoryFeedViewModel.swift */; };
 		51AD2EA52927B1C200460937 /* CategoryFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EA42927B1C200460937 /* CategoryFeedView.swift */; };
-		51AD2EAA2928C29A00460937 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EA92928C29A00460937 /* TestView.swift */; };
 		51AD2EAC292B436E00460937 /* CategoryRecipeRowVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EAB292B436E00460937 /* CategoryRecipeRowVIew.swift */; };
 		51AD2EB1292B5F8E00460937 /* RecipeRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2EB0292B5F8E00460937 /* RecipeRowViewModel.swift */; };
 		51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8DAF2924C3E800718A19 /* MyBakeringApp.swift */; };
@@ -53,7 +51,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		51AD2E5D2925F38700460937 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		51AD2E602925FAD500460937 /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		51AD2E632925FDC300460937 /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
 		51AD2E652925FF4500460937 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -75,7 +72,6 @@
 		51AD2E9F2927AD0F00460937 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		51AD2EA12927AFF600460937 /* CategoryFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeedViewModel.swift; sourceTree = "<group>"; };
 		51AD2EA42927B1C200460937 /* CategoryFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeedView.swift; sourceTree = "<group>"; };
-		51AD2EA92928C29A00460937 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		51AD2EAB292B436E00460937 /* CategoryRecipeRowVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRecipeRowVIew.swift; sourceTree = "<group>"; };
 		51AD2EB0292B5F8E00460937 /* RecipeRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowViewModel.swift; sourceTree = "<group>"; };
 		51CC8DAC2924C3E800718A19 /* MyBakering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBakering.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +216,6 @@
 				51CC8DB32924C3E800718A19 /* Assets.xcassets */,
 				51AD2E6C29264D1400460937 /* GoogleService-Info.plist */,
 				51CC8DB52924C3E800718A19 /* Preview Content */,
-				51AD2EA92928C29A00460937 /* TestView.swift */,
 			);
 			path = MyBakering;
 			sourceTree = "<group>";
@@ -291,7 +286,6 @@
 			children = (
 				51AD2E972927921E00460937 /* UploadRecipeViewModel.swift */,
 				51CC8DCE2924CE2D00718A19 /* NewRecipeView.swift */,
-				51AD2E5D2925F38700460937 /* Ingredient.swift */,
 			);
 			path = NewRecipe;
 			sourceTree = "<group>";
@@ -405,7 +399,6 @@
 				51AD2E792926504900460937 /* AuthViewModel.swift in Sources */,
 				51CC8DC02924C4A200718A19 /* RecipeRowView.swift in Sources */,
 				51CC8DB22924C3E800718A19 /* ContentView.swift in Sources */,
-				51AD2E5E2925F38700460937 /* Ingredient.swift in Sources */,
 				51CC8DCF2924CE2D00718A19 /* NewRecipeView.swift in Sources */,
 				51AD2EB1292B5F8E00460937 /* RecipeRowViewModel.swift in Sources */,
 				51AD2EA02927AD0F00460937 /* MyPageViewModel.swift in Sources */,
@@ -415,7 +408,6 @@
 				51AD2E68292602FD00460937 /* RegisterView.swift in Sources */,
 				51AD2EA22927AFF600460937 /* CategoryFeedViewModel.swift in Sources */,
 				51AD2E8B2927536900460937 /* ProfileEditView.swift in Sources */,
-				51AD2EAA2928C29A00460937 /* TestView.swift in Sources */,
 				51AD2E8929273FF400460937 /* UserService.swift in Sources */,
 				51CC8DB02924C3E800718A19 /* MyBakeringApp.swift in Sources */,
 				51AD2E9C2927962000460937 /* Recipe.swift in Sources */,
@@ -549,12 +541,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyBakering/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "마이 베이커링";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -565,7 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lee.MyBakering;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -579,12 +574,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyBakering/Preview Content\"";
 				DEVELOPMENT_TEAM = 99KH3TLG9V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "마이 베이커링";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -595,7 +593,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lee.MyBakering;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

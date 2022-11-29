@@ -38,9 +38,3 @@ struct CategoryFeedView: View {
         }
     }
 }
-
-//struct CategoryFeedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CategoryFeedView()
-//    }
-//}
